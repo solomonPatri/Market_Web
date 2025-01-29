@@ -1,11 +1,11 @@
-﻿using Market_Web.Object.Model;
-using Market_Web.Object.Repository;
+﻿using Market_Web.Markets.Model;
+using Market_Web.Markets.Repository;
 using Market_Web.Data;
 using Microsoft.EntityFrameworkCore;
-using Market_Web.Object.Dtos;
+using Market_Web.Markets.Dtos;
 using AutoMapper;
 
-namespace Market_Web.Object.Repository
+namespace Market_Web.Markets.Repository
 {
     public class MarketRepo:IMarketRepo
     {

@@ -1,4 +1,4 @@
-﻿namespace Market_Web.Object.Dtos
+﻿namespace Market_Web.Markets.Dtos
 {
     public class GetInaugurationMarket
     {

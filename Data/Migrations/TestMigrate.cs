@@ -1,4 +1,4 @@
-﻿using Market_Web.Object;
+﻿using Market_Web.Markets;
 using FluentMigrator;
 
 namespace Market_Web.Data.Migrations

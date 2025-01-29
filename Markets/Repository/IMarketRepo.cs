@@ -1,9 +1,9 @@
-﻿using Market_Web.Object.Dtos;
-using Market_Web.Object.Model;
+﻿using Market_Web.Markets.Dtos;
+using Market_Web.Markets.Model;
 
 
 
-namespace Market_Web.Object.Repository
+namespace Market_Web.Markets.Repository
 {
     public interface IMarketRepo
     {

@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Market_Web.Object.Dtos;
-using Market_Web.Object.Model;
+using Market_Web.Markets.Dtos;
+using Market_Web.Markets.Model;
     
     
- namespace Market_Web.Object.Mappers
+ namespace Market_Web.Markets.Mappers
 {
     public class MarketMappingProfile:Profile
     {

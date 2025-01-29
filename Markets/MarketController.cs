@@ -1,9 +1,9 @@
-﻿using Market_Web.Object.Model;
-using Market_Web.Object.Repository;
+﻿using Market_Web.Markets.Model;
+using Market_Web.Markets.Repository;
 using Microsoft.AspNetCore.Mvc;
-using Market_Web.Object.Dtos;
+using Market_Web.Markets.Dtos;
 
-namespace Market_Web.Object
+namespace Market_Web.Markets
 {
     [ApiController]
     [Route("api/v1/[controller]")]

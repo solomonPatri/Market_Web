@@ -1,6 +1,9 @@
-﻿namespace Market_Web.Object.Dtos
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace Market_Web.Markets.Dtos
 {
-    public class CreateMarketResponse
+    public class CreateMarketRequest
     {
 
         public string Name { get; set; }
@@ -10,6 +13,7 @@
         public DateOnly Inauguration { get; set; }
 
         public double SalesPerMonth { get; set; }
+
 
 
 

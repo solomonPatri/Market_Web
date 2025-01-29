@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Policy;
 
-namespace Market_Web.Object.Model
+namespace Market_Web.Markets.Model
 {
     [Table("market")]
     public class Market

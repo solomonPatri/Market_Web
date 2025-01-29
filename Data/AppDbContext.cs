@@ -1,4 +1,4 @@
-﻿using Market_Web.Object.Model;
+﻿using Market_Web.Markets.Model;
 using Microsoft.EntityFrameworkCore;
 
 
