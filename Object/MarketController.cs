@@ -20,7 +20,7 @@ namespace Market_Web.Object
         }
 
 
-        [HttpGet("AllMarkets")]
+        [HttpGet("all")]
 
         public async Task<ActionResult<IEnumerable<Market>>> GetAllMarkets()
         {
@@ -33,29 +33,15 @@ namespace Market_Web.Object
 
         }
 
+        [HttpPost("create")]
 
-        public async Task<ActionResult<IEnumerable<GetInaugurationMarket>>> GetInaugarationMarkets()
+        public async Task<ActionResult<CreateMarketResponse>> CreateMarket([FromBody] CreateMarketRequest createMarketRequest)
         {
 
-            List<GetInaugurationMarket> market = await _marketRepo.GetDateInauguration();
-
-            return Ok(market);
-
-
-
-
-
+            CreateMarketResponse create = await _marketRepo.CreateMarket(createMarketRequest);
+            return Created("", create);
         }
-
-
-        public async Task<ActionResult<IEnumerable<GetNrEmployees>>> GetEmployees()
-        {
-
-            List<GetNrEmployees> markets = await _marketRepo.GetNrEmployees();
-
-            return Ok(markets);
-
-        }
+       
 
 
 

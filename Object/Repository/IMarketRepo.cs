@@ -9,10 +9,7 @@ namespace Market_Web.Object.Repository
     {
         Task<List<Market>> GetAllAsync();
 
-        Task<List<GetInaugurationMarket>> GetDateInauguration();
-
-        Task<List<GetNrEmployees>> GetNrEmployees();
-
+        Task<CreateMarketResponse> CreateMarket(CreateMarketRequest createMarketRequest);
 
 
 

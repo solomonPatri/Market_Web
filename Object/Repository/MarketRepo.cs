@@ -3,17 +3,20 @@ using Market_Web.Object.Repository;
 using Market_Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Market_Web.Object.Dtos;
+using AutoMapper;
 
 namespace Market_Web.Object.Repository
 {
     public class MarketRepo:IMarketRepo
     {
         private readonly AppDbContext _appdbContext;
+        private readonly IMapper _mapper;
 
-        public MarketRepo(AppDbContext context)
+        public MarketRepo(AppDbContext context,IMapper mapper)
         {
 
             this._appdbContext = context;
+            this._mapper = mapper;
 
         }
 
@@ -24,24 +27,23 @@ namespace Market_Web.Object.Repository
 
         }
 
-        public async Task<List<GetInaugurationMarket>> GetDateInauguration()
+        public async Task<CreateMarketResponse> CreateMarket(CreateMarketRequest createMarketRequest)
         {
 
-            return await _appdbContext.Markets.Select(markets => new GetInaugurationMarket {Name=markets.Name,Inauguration= markets.Inauguration}).ToListAsync();
+            Market market = _mapper.Map<Market>(createMarketRequest);
+
+            _appdbContext.Markets.Add(market);
+
+            await _appdbContext.SaveChangesAsync();
+            CreateMarketResponse response = _mapper.Map<CreateMarketResponse>(market);
+            return response;
+
+
+
+
+
 
         }
-
-
-        public async Task<List<GetNrEmployees>> GetNrEmployees()
-        {
-
-
-            return await _appdbContext.Markets.Select(markets => new GetNrEmployees { Name = markets.Name, Employee = markets.Employee }).ToListAsync();
-
-
-
-        }
-
 
 
 
