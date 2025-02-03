@@ -35,18 +35,31 @@ namespace Market_Web.Markets
 
         [HttpPost("create")]
 
-        public async Task<ActionResult<CreateMarketResponse>> CreateMarket([FromBody] CreateMarketRequest createMarketRequest)
+        public async Task<ActionResult<MarketResponse>> CreateMarket([FromBody] MarketRequest createMarketRequest)
         {
 
-            CreateMarketResponse create = await _marketRepo.CreateMarket(createMarketRequest);
+            MarketResponse create = await _marketRepo.CreateAsync(createMarketRequest);
             return Created("", create);
         }
-       
 
+        [HttpDelete("delete/{id}")]
 
+        public async Task<ActionResult<MarketResponse>> DeleteMarket([FromRoute] int id)
+        {
+            MarketResponse response = await _marketRepo.DeleteAsync(id);
 
+            return Accepted("", response);
 
+        }
 
+        [HttpPut("edit/{id}")]
+         
+        public async Task<ActionResult<MarketResponse>> EditMarket([FromRoute] int id,[FromBody] MarketUpdateRequest market)
+        {
+            MarketResponse response = await _marketRepo.UpdateAsync(id, market);
+
+            return Accepted("", response);
+        }
 
 
 

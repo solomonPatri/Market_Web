@@ -10,8 +10,9 @@ using Market_Web.Markets.Model;
         public MarketMappingProfile()
         {
 
-            CreateMap<CreateMarketRequest, Market>();
-            CreateMap<Market, CreateMarketResponse>();
+            CreateMap<MarketRequest, Market>();
+            CreateMap<Market,MarketResponse>();
+            CreateMap<MarketResponse, MarketUpdateRequest>();
 
 
 

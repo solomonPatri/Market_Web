@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Market_Web.Markets.Dtos
 {
-    public class CreateMarketRequest
+    public class MarketRequest
     {
 
         public string Name { get; set; }

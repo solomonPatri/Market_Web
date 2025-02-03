@@ -1,6 +1,6 @@
 ﻿namespace Market_Web.Markets.Dtos
 {
-    public class CreateMarketResponse
+    public class MarketResponse
     {
 
         public string Name { get; set; }

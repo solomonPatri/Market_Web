@@ -27,7 +27,7 @@ namespace Market_Web.Markets.Repository
 
         }
 
-        public async Task<CreateMarketResponse> CreateMarket(CreateMarketRequest createMarketRequest)
+        public async Task<MarketResponse> CreateAsync(MarketRequest createMarketRequest)
         {
 
             Market market = _mapper.Map<Market>(createMarketRequest);
@@ -35,15 +35,70 @@ namespace Market_Web.Markets.Repository
             _appdbContext.Markets.Add(market);
 
             await _appdbContext.SaveChangesAsync();
-            CreateMarketResponse response = _mapper.Map<CreateMarketResponse>(market);
+            MarketResponse response = _mapper.Map<MarketResponse>(market);
             return response;
 
+        }
 
+        public async Task<MarketResponse>  DeleteAsync(int id)
+        {
 
+            Market mark = await _appdbContext.Markets.FindAsync(id);
 
+            MarketResponse response = _mapper.Map<MarketResponse>(mark);
 
+            await _appdbContext.SaveChangesAsync();
+
+            return response;
 
         }
+
+        public async Task<MarketResponse> UpdateAsync(int id, MarketUpdateRequest market)
+        {
+
+            Market mark = await _appdbContext.Markets.FindAsync(id);
+
+            if (market.Name!= null)
+            {
+                mark.Name = market.Name; 
+
+
+            }
+
+            if (market.Employee.HasValue)
+            {
+                mark.Employee = market.Employee.Value;
+
+            }
+
+            if (market.Inauguration.HasValue)
+            {
+                mark.Inauguration = market.Inauguration.Value;
+            }
+
+
+            if (market.SalesPerMonth.HasValue)
+            {
+
+                mark.SalesPerMonth = market.SalesPerMonth.Value;
+
+            }
+
+            _appdbContext.Markets.Update(mark);
+
+            await _appdbContext.SaveChangesAsync();
+
+            MarketResponse response = _mapper.Map<MarketResponse>(mark);
+
+            return response;
+
+        }
+
+
+
+
+
+
 
 
 
