@@ -5,7 +5,7 @@ using System.Text;
 using Market_Web.Data;
 using System.Net.WebSockets;
 using Market_Web.Markets.Repository;
-
+using Market_Web.Markets.Service;
 
 public class Program
 {
@@ -28,6 +28,9 @@ public class Program
             new MySqlServerVersion(new Version(8, 0, 21))));
 
         builder.Services.AddScoped<IMarketRepo,MarketRepo>();
+        builder.Services.AddScoped<IMarketQueryService, MarketQueryService>();
+        builder.Services.AddScoped<IMarketCommandService, MarketCommandService>();
+
 
         builder.Services.AddFluentMigratorCore()
             .ConfigureRunner(rb => rb.AddMySql5()

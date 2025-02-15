@@ -9,15 +9,16 @@ namespace Market_Web.Markets.Repository
     {
         Task<List<Market>> GetAllAsync();
 
+
         Task<MarketResponse> CreateAsync(MarketRequest createMarketRequest);
 
 
         Task<MarketResponse> DeleteAsync(int id);
 
         Task<MarketResponse> UpdateAsync(int id, MarketUpdateRequest mark);
+        Task<MarketResponse> FindByNameAsync(MarketRequest market);
 
-
-
+        Task<MarketResponse> FindByIdAsync(int id);
 
 
 
