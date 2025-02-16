@@ -23,7 +23,7 @@ namespace Market_Web.Markets.Service
 
         }
 
-        public async  Task<MarketResponse> FindByNameAsync(MarketRequest market)
+        public async  Task<MarketResponse> FindByNameAsync(string market)
         {
             if(market != null)
             {
@@ -48,6 +48,20 @@ namespace Market_Web.Markets.Service
         }
 
 
+        public async Task<MarketListNames> GetMarketListNames()
+        {
+
+            MarketListNames response = await this._repo.GetMarketListNames();
+            if(response != null)
+            {
+                return response;
+
+            }
+            throw new MarketNotFoundException();
+
+
+
+        }
 
 
 

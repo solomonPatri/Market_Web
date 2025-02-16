@@ -94,10 +94,10 @@ namespace Market_Web.Markets.Repository
 
         }
 
-        public async Task<MarketResponse> FindByNameAsync(MarketRequest market)
+        public async Task<MarketResponse> FindByNameAsync(string market)
         {
 
-            Market marketsearched = await _appdbContext.Markets.FirstOrDefaultAsync(m => m.Name.Equals(market.Name));
+            Market marketsearched = await _appdbContext.Markets.FirstOrDefaultAsync(m => m.Name.Equals(market));
 
 
             MarketResponse response = _mapper.Map<MarketResponse>(marketsearched);
@@ -119,6 +119,23 @@ namespace Market_Web.Markets.Repository
 
 
         }
+
+        public async Task<MarketListNames> GetMarketListNames()
+        {
+
+            List<string> names = await _appdbContext.Markets.Select(m => m.Name).ToListAsync();
+
+            MarketListNames response = new MarketListNames();
+
+            response.Names = names;
+
+            return response;
+
+
+
+
+        }
+
 
 
 

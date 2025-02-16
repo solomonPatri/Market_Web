@@ -7,10 +7,11 @@ namespace Market_Web.Markets.Service
     {
         Task<List<Market>> GetAllAsync();
 
-        Task<MarketResponse> FindByNameAsync(MarketRequest market);
+        Task<MarketResponse> FindByNameAsync(string market);
 
         Task<MarketResponse> FindByIdAsync(int id);
 
+        Task<MarketListNames> GetMarketListNames();
 
 
 

@@ -94,10 +94,74 @@ namespace Market_Web.Markets
 
         }
 
+        [HttpGet("GetMarketNames")]
+
+        public async Task<ActionResult<MarketListNames>> GetMarketListNames()
+        {
+
+            try
+            {
+                MarketListNames response = await _queryservice.GetMarketListNames();
+
+                return Accepted("", response);
+
+            }catch(MarketNotFoundException nf)
+            {
+                return NotFound(nf.Message);
+            }
+
+
+        }
+
+        [HttpGet("find/name/{name}")]
+
+        public async Task<ActionResult<MarketResponse>> FindByName([FromRoute]string name)
+        {
+            try
+            {
+                MarketResponse response = await _queryservice.FindByNameAsync(name);
+
+                return Accepted("", response);
+
+
+            }catch(MarketNotFoundException nf)
+            {
+
+                return NotFound(nf.Message);
+            }
 
 
 
 
+
+
+
+        }
+
+        [HttpGet("find/id/{id}")]
+
+        public async Task<ActionResult<MarketResponse>> GetById([FromRoute]int id)
+        {
+
+            try
+            {
+                MarketResponse response = await _queryservice.FindByIdAsync(id);
+
+                return Accepted("", response);
+            }catch(MarketNotFoundException nf)
+            {
+                return NotFound(nf.Message);
+
+            }
+
+
+
+
+
+
+
+
+        }
 
 
 

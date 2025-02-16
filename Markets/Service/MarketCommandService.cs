@@ -17,7 +17,7 @@ namespace Market_Web.Markets.Service
        
         public async Task<MarketResponse> CreateAsync(MarketRequest request)
         {
-            MarketResponse marketexist = await this._repo.FindByNameAsync(request);
+            MarketResponse marketexist = await this._repo.FindByNameAsync(request.Name);
             if (marketexist == null)
             {
                 MarketResponse response = await this._repo.CreateAsync(request);
