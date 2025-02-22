@@ -120,11 +120,11 @@ namespace Market_Web.Markets
 
         [HttpGet("find/name/{name}")]
 
-        public async Task<ActionResult<MarketResponse>> FindByName([FromRoute]string name)
+        public async Task<ActionResult<GetAllMarketsDTO>> FindByName([FromRoute]string name)
         {
             try
             {
-                MarketResponse response = await _queryservice.FindByNameAsync(name);
+                GetAllMarketsDTO response = await _queryservice.FindByNameAsync(name);
 
                 return Accepted("", response);
 

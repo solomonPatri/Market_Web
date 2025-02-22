@@ -7,7 +7,7 @@ namespace Market_Web.Markets.Service
     {
         Task<GetAllMarketsDTO> GetAllAsync();
 
-        Task<MarketResponse> FindByNameAsync(string market);
+        Task<GetAllMarketsDTO> FindByNameAsync(string market);
 
         Task<MarketResponse> FindByIdAsync(int id);
 

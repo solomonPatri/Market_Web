@@ -4,7 +4,7 @@ namespace Market_Web.Markets.Dtos
 {
     public class GetAllMarketsDTO
     {
-        public List<Market> Markets { get; set; }
+        public List<MarketResponse> Markets { get; set; }
 
 
 

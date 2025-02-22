@@ -13,7 +13,7 @@ using Market_Web.Markets.Model;
             CreateMap<MarketRequest, Market>();
             CreateMap<Market,MarketResponse>();
             CreateMap<MarketResponse, MarketUpdateRequest>();
-
+            CreateMap<MarketRequest, MarketResponse>();
 
 
 

@@ -16,13 +16,16 @@ namespace Market_Web.Markets.Repository
         Task<MarketResponse> DeleteAsync(int id);
 
         Task<MarketResponse> UpdateAsync(int id, MarketUpdateRequest mark);
-        Task<MarketResponse> FindByNameAsync(string market);
+        Task<GetAllMarketsDTO> FindByNameAsync(string market);
 
         Task<MarketResponse> FindByIdAsync(int id);
 
 
 
         Task<MarketListNames> GetMarketListNames();
+
+
+        Task<MarketResponse> FindByMarketName(string Name);
 
 
 

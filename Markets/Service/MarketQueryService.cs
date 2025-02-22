@@ -29,11 +29,11 @@ namespace Market_Web.Markets.Service
 
         }
 
-        public async  Task<MarketResponse> FindByNameAsync(string market)
+        public async  Task<GetAllMarketsDTO> FindByNameAsync(string market)
         {
             if(market != null)
             {
-                MarketResponse response = await this._repo.FindByNameAsync(market);
+                GetAllMarketsDTO response = await this._repo.FindByNameAsync(market);
                 return response;
 
             }

@@ -22,9 +22,14 @@ namespace Market_Web.Markets.Repository
 
         public async Task<GetAllMarketsDTO> GetAllAsync()
         {
-            List<Market> markets = await _appdbContext.Markets.ToListAsync();
+           IList<Market> data = await _appdbContext.Markets.ToListAsync();
 
-            GetAllMarketsDTO response = _mapper.Map<GetAllMarketsDTO>(markets);
+            var markets = data.Select(m => _mapper.Map<MarketResponse>(m)).ToList(); 
+
+
+            GetAllMarketsDTO response = new GetAllMarketsDTO();
+
+            response.Markets = markets;
 
             return response;
 
@@ -97,15 +102,24 @@ namespace Market_Web.Markets.Repository
 
         }
 
-        public async Task<MarketResponse> FindByNameAsync(string market)
+        public async Task<GetAllMarketsDTO> FindByNameAsync(string market)
         {
 
-            Market marketsearched = await _appdbContext.Markets.FirstOrDefaultAsync(m => m.Name.Equals(market));
+            IList<Market> exist = await _appdbContext.Markets.ToListAsync();
 
+            var map = exist.Select(m => _mapper.Map<MarketResponse>(m)).ToList();
 
-            MarketResponse response = _mapper.Map<MarketResponse>(marketsearched);
+            var we = map.Where(w => w.Name.Equals(market)).ToList();
+
+            GetAllMarketsDTO response = new GetAllMarketsDTO();
+
+            response.Markets = we;
 
             return response;
+
+
+
+
 
 
         }
@@ -140,7 +154,21 @@ namespace Market_Web.Markets.Repository
         }
 
 
+        public async Task<MarketResponse> FindByMarketName(string name)
+        {
 
+            Market marketsearched = await _appdbContext.Markets.FirstOrDefaultAsync(m => m.Name.Equals(name));
+
+
+            MarketResponse response = _mapper.Map<MarketResponse>(marketsearched);
+
+            return response;
+
+
+
+
+
+        }
 
 
 
