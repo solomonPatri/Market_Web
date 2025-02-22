@@ -105,22 +105,15 @@ namespace Market_Web.Markets.Repository
         public async Task<GetAllMarketsDTO> FindByNameAsync(string market)
         {
 
-            IList<Market> exist = await _appdbContext.Markets.ToListAsync();
+            var exist = await _appdbContext.Markets.Where(m => m.Name.Equals(market)).ToListAsync();
 
-            var map = exist.Select(m => _mapper.Map<MarketResponse>(m)).ToList();
-
-            var we = map.Where(w => w.Name.Equals(market)).ToList();
+            var map = exist.Select(s => _mapper.Map<MarketResponse>(s)).ToList();
 
             GetAllMarketsDTO response = new GetAllMarketsDTO();
 
-            response.Markets = we;
+            response.Markets = map;
 
             return response;
-
-
-
-
-
 
         }
 
