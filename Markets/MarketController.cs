@@ -5,6 +5,7 @@ using Market_Web.Markets.Dtos;
 using Market_Web.Markets.Exceptions;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Market_Web.Markets.Service;
+using Microsoft.Extensions.FileProviders;
 
 namespace Market_Web.Markets
 {
@@ -26,13 +27,17 @@ namespace Market_Web.Markets
 
         [HttpGet("all")]
 
-        public async Task<ActionResult<IEnumerable<Market>>> GetAllMarkets()
+        public async Task<ActionResult<GetAllMarketsDTO>> GetAllMarkets()
         {
+            try
+            {
+                GetAllMarketsDTO markets = await _queryservice.GetAllAsync();
 
-            var markets = await _queryservice.GetAllAsync();
-
-            return Ok(markets);
-
+                return Ok(markets);
+            }catch(MarketNotFoundException nf)
+            {
+               return NotFound(nf.Message);
+            }
 
 
         }
@@ -129,12 +134,6 @@ namespace Market_Web.Markets
 
                 return NotFound(nf.Message);
             }
-
-
-
-
-
-
 
         }
 

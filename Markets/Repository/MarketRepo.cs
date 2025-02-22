@@ -20,10 +20,13 @@ namespace Market_Web.Markets.Repository
 
         }
 
-        public async Task<List<Market>> GetAllAsync()
+        public async Task<GetAllMarketsDTO> GetAllAsync()
         {
-            return await _appdbContext.Markets.ToListAsync();
+            List<Market> markets = await _appdbContext.Markets.ToListAsync();
 
+            GetAllMarketsDTO response = _mapper.Map<GetAllMarketsDTO>(markets);
+
+            return response;
 
         }
 

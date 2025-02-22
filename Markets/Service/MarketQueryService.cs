@@ -2,6 +2,7 @@
 using Market_Web.Markets.Model;
 using Market_Web.Markets.Repository;
 using Market_Web.Markets.Exceptions;
+using Microsoft.AspNetCore.Server.IIS.Core;
 
 namespace Market_Web.Markets.Service
 {
@@ -16,10 +17,15 @@ namespace Market_Web.Markets.Service
         }
 
 
-       public async  Task<List<Market>> GetAllAsync()
+       public async  Task<GetAllMarketsDTO> GetAllAsync()
         {
-
-            return await this._repo.GetAllAsync();
+            GetAllMarketsDTO response = await this._repo.GetAllAsync();
+            if(response != null)
+            {
+                return response;
+            }
+            throw new MarketNotFoundException();
+           
 
         }
 

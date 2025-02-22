@@ -5,7 +5,7 @@ namespace Market_Web.Markets.Service
 {
     public interface IMarketQueryService
     {
-        Task<List<Market>> GetAllAsync();
+        Task<GetAllMarketsDTO> GetAllAsync();
 
         Task<MarketResponse> FindByNameAsync(string market);
 

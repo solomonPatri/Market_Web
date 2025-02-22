@@ -7,7 +7,7 @@ namespace Market_Web.Markets.Repository
 {
     public interface IMarketRepo
     {
-        Task<List<Market>> GetAllAsync();
+        Task<GetAllMarketsDTO> GetAllAsync();
 
 
         Task<MarketResponse> CreateAsync(MarketRequest createMarketRequest);
